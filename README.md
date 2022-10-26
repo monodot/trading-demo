@@ -33,6 +33,7 @@ docker-compose up -d
 There aren't many tests at the moment, but to run them, you can run the following command:
 
 ```bash
+cd trading-service
 ./mvnw test
 ```
 
