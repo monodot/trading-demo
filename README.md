@@ -37,6 +37,21 @@ cd trading-service
 ./mvnw test
 ```
 
+### Load test
+
+Running a load test with k6.
+
+**First, install k6.**
+
+Then:
+
+```
+cd load-testing
+npm install
+npm run pretest
+npm run test
+```
+
 ## Built With
 
 - [Maven](https://maven.apache.org) - Dependency Management
