@@ -18,6 +18,7 @@ You will need to have the following installed on your machine:
 To run the application, you can run the following command:
 
 ```bash
+cd trading-service
 ./mvnw spring-boot:run
 ```
 
