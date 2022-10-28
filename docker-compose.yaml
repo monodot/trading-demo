@@ -1,0 +1,16 @@
+services:
+
+  trading-service:
+    build:
+      context: ./trading-service
+    image: trading-service:latest
+    ports:
+      - "8080:8080"
+
+  trading-service-k6test:
+    build:
+      context: ./k6test
+    image: trading-service-k6test:latest
+    # Environment variables for running the app (not for the build)
+    environment:
+      - TRADING_SERVICE_BASE_URL=http://trading-service:8080
