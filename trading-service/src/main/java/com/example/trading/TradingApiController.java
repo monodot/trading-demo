@@ -1,5 +1,6 @@
 package com.example.trading;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,12 @@ public class TradingApiController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TradingApiController.class);
 
+    private final MeterRegistry meterRegistry;
+
+    public TradingApiController(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+    }
+
     @GetMapping("/ready")
     ResponseEntity<String> test() {
         LOGGER.info("Received ready endpoint request");
@@ -22,8 +29,9 @@ public class TradingApiController {
 
     @PostMapping("/trades")
     ResponseEntity<String> newTrade(@RequestBody Trade trade) {
-        // LOG something here, post transaction to Redis, etc.
+        // TODO add transaction to Redis, look up a price, debit an account, etc.
         LOGGER.info("Received new trade: {}", trade);
+        meterRegistry.counter("trades", "action", trade.getAction()).increment();
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
