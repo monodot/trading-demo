@@ -1,5 +1,5 @@
-// import * as faker from 'faker/locale/en_US';
-// import * as faker from '@faker-js/faker/locale/en_US';
+// Generates a fake Trade object for POSTing to the API
+
 import { faker } from '@faker-js/faker/locale/en_US';
 
 export const generateTrade = () => ({
