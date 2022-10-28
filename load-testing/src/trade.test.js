@@ -4,7 +4,7 @@ import { generateTrade } from './generators/trade';
 
 export const options = {
     vus: 5, // virtual users
-    duration: '5s',
+    duration: '180s',
 };
 
 export default function () {
@@ -16,7 +16,4 @@ export default function () {
             'Content-Type': 'application/json'
         }
     });
-
-    // http.get('http://localhost:8080/ready');
-    sleep(1);
 }
